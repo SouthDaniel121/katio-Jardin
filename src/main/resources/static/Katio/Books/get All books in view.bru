@@ -1,0 +1,11 @@
+meta {
+  name: get All books in view
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/katio/books/getBooksByAuthor
+  body: none
+  auth: inherit
+}
