@@ -73,7 +73,7 @@ public class UserService implements BaseUserService {
     }
 
     @Override
-    public User updateUser(User user) {
+    public User updateUserByUsername(User user) {
         Optional<User> oldUser = userRepository.findByUserName(user.getEmail());
         if(oldUser.isPresent() && !oldUser.get().getEmail().isBlank())
         {

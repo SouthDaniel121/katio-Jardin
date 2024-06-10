@@ -7,5 +7,5 @@ public interface BaseUserService {
 
     User addUser(User user);
 
-    User updateUser(User user);
+    User updateUserByUsername(User user);
 }

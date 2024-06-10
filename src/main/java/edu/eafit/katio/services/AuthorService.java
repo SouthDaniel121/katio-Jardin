@@ -33,12 +33,17 @@ public class AuthorService implements BaseAuthorService {
     }
 
     public Iterable<Authors> getAuthorsByName(String name) {
-        return _AuthorRepository.getAuthorsByName(name);
+        return _AuthorRepository.findByName(name);
     }
 
     @Override
     public Optional<Authors> getAuthorById(Long id) {
         return _AuthorRepository.findById(id);
+    }
+
+    public Iterable<Authors> findByName(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
     }
 
  
