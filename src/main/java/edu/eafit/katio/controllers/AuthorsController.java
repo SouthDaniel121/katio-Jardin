@@ -49,7 +49,7 @@ public class AuthorsController {
     /**
      * Metodo postt para agregar autores
      * @param author
-     * @return
+     * @return author creado
      */
     @PostMapping("/add")
     public ResponseEntity<?> addAuthor(@RequestBody Authors author) {
@@ -86,7 +86,7 @@ public class AuthorsController {
        */
       @GetMapping("/getByName/{name}")
       public ResponseEntity<Iterable<Authors>> getAuthorsByName(@PathVariable String name) {
-          Iterable<Authors> authors = new AuthorService(_authorRepository).getAuthorsByName(name);
+          Iterable<Authors> authors = new AuthorService(_authorRepository).findByName(name);
           return ResponseEntity.ok(authors);
       }
   
@@ -103,15 +103,8 @@ public class AuthorsController {
       }
 
 
+    //PUT falta editar author.
+      
+      //GET Falta por fecha de nacimiento.
 
-
-
-
-    /**
-     * buscar un autor por id
-     * buscar un autor por Nombre o Apellido
-     * Agregar un autor
-     * Editar un autor
-     * Buscar un autor por pais de procedencia
-     */
 }

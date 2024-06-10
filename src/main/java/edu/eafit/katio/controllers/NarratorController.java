@@ -26,6 +26,13 @@ public class NarratorController{
 @Autowired 
 private NarratorService narratorService; 
 
+
+
+/**
+ * 
+ * @param narrator
+ * @return Author Creado
+ */
 @PostMapping("/add")
 public ResponseEntity<Narrator> addNarrator(@RequestBody Narrator narrator) {
     Narrator createdNarrator = narratorService.addNarrator(narrator);
@@ -37,6 +44,11 @@ public ResponseEntity<Narrator> addNarrator(@RequestBody Narrator narrator) {
     return ResponseEntity.ok(createdNarrator);
 } 
 
+
+    /**
+     * 
+     * @return Todos los narradores
+     */
      @GetMapping("/getall")
     public ResponseEntity<Iterable<Narrator>> getAllnarrator(){
         Iterable<Narrator> narrators = new NarratorService(narratorService).getAllNarrator();
@@ -45,7 +57,11 @@ public ResponseEntity<Narrator> addNarrator(@RequestBody Narrator narrator) {
 
   
    
-    //trae a narrator por id
+    /**
+     * 
+     * @param id
+     * @return Author por id
+     */
     @GetMapping ("/NarratorById/{id}")
     public Optional<Narrator> getNarratorById(@PathVariable("id") Integer id){
         return new NarratorService(narratorService).geNarratorById(id);

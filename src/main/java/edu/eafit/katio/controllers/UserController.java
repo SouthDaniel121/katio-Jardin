@@ -38,7 +38,6 @@ import edu.eafit.katio.services.UserService;
 
 
 public class UserController {
-
     private final JwtService _jwtService;
     private final AuthenticationService _authService;
 
@@ -51,6 +50,11 @@ public class UserController {
         _authService = authService;
     }
     
+
+    /**
+     * 
+     * @return Todos los usuarios 
+     */
     @GetMapping("/getall")
     public ResponseEntity<Iterable<User>> getAllUsers(){
         
@@ -58,6 +62,13 @@ public class UserController {
         return new ResponseEntity<Iterable<User>>(users, HttpStatus.OK);
     }
 
+
+
+    /**
+     * 
+     * @param user
+     * @return User Creado
+     */
     @PutMapping("/add")
     public ResponseEntity<String> addUser(@RequestBody User user){
 
@@ -69,12 +80,25 @@ public class UserController {
             new ResponseEntity<String>("El usuario ha sido creado correctamente", HttpStatus.OK);
     }
 
+
+
+    /**
+     * 
+     * @param user
+     * @return  usuario con ese email/Gmail
+     */
     @PostMapping("/findbyemail")
     public ResponseEntity<?> findByEmail(User user){
         var userObject = new UserService(userRepository).findByEmail(user.getEmail());
         return ResponseEntity.ok(userObject);
     }
 
+
+    /**
+     * 
+     * @param user
+     * @return Actualizacion de datos de usuario
+     */
     @PostMapping("/update")
     public ResponseEntity<?> updateUser(@RequestBody User user){
         var updatedUser = new UserService(userRepository);
@@ -82,23 +106,26 @@ public class UserController {
     }
 
 
-     //trae a usuario por id
+    /**
+     * 
+     * @param id
+     * @return Traer usuaria por id 
+     */
     @GetMapping ("/UserById/{id}")
     public Optional<User> getUserById(@PathVariable("id") Long id){
         return new UserService(userRepository).getUserById(id);
    }
 
 
-    //   @PutMapping("/update/{username}")
-    // public ResponseEntity<Object> updateUsuario(@PathVariable("username") String username, @RequestBody Usuarios updatedUsuario) {
-    //     var usuarioService = new UsuarioService(usuarioRepository);
-    //     Usuarios usuarioActualizado = usuarioService.updateUsuarioByUsername(username, updatedUsuario);
-    //     if (usuarioActualizado != null) {
-    //         return new ResponseEntity<>(usuarioActualizado, HttpStatus.OK);
-    //     } else {
-    //         return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
-    //     }
-    // }
+    //  @PutMapping("/update/{username}")
+   //  public ResponseEntity<Object> updateUser(@PathVariable("username") String username, @RequestBody User updatedUsuario) {
+     //    var userService = new UserService(userRepository);
+      //  User userUpdate= userService.updateUserByUsername(username, updatedUsuario);
+//if (userUpdate != null) {
+      //     return new ResponseEntity<>(userUpdate, HttpStatus.OK);
+      // return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+     //  }
+    
 
     /**
      * Buscar Usuario por nombre

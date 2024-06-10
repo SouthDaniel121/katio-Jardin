@@ -19,6 +19,12 @@ public class HealthCheck {
     @Autowired
     private BookRepository _BookRepository;
 
+
+
+    /**
+     * 
+     * @return  verifica el estado de salud del servicio de libros y la conexión a la base de datos
+     */
     @GetMapping("/check")
     public ResponseEntity<String> healthCheck(){
         
