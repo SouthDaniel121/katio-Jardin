@@ -111,6 +111,18 @@ public class User implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+    public Object isActive() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isActive'");
+    }
+    public void setActive(Object active) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setActive'");
+    }
+    public void setPassword(String password) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
+    }
     
     
 }

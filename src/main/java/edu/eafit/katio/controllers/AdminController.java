@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.eafit.katio.models.Admin.Log;
 import edu.eafit.katio.models.User;
 import edu.eafit.katio.services.AdminService;
 
@@ -62,20 +61,11 @@ public class AdminController {
      *  Deshabilitar usuario por id del user.
      */
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable Integer id) {
         adminService.deleteUser(id);
     }
     
 
    
     
-
-    /**
-     * 
-     * @return Registros
-     */
-    @GetMapping("/logs")
-    public List<Log> getLogs() {
-        return adminService.getLogs();
-    }
 }
