@@ -1,9 +1,10 @@
-
-package edu.eafit.katio.interfaces;
+/*
+ * 
+ * 
+ * package edu.eafit.katio.interfaces;
 
 import java.util.Optional;
 
-import edu.eafit.katio.models.Admin.Log;
 import edu.eafit.katio.models.User;
 
 public interface BaseAdminService {
@@ -15,3 +16,4 @@ public interface BaseAdminService {
     Iterable<Log> getAllLogs();
     Optional<Log> findById(Long id);
 }
+ */

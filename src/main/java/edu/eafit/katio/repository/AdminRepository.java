@@ -1,4 +1,8 @@
-/*package edu.eafit.katio.repository;
+/*
+ * 
+package edu.eafit.katio.repository;
+
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,6 +23,11 @@ public interface AdminRepository extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u WHERE u.email = :email")
     User getUserByEmail(@Param("email") String email);
 
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM user WHERE Id like %:id%") 
+    List<User>getUser(@Param("id") Integer id);
+
 
     @Query("SELECT l FROM Log l")
     Iterable<Log> getLogs();
@@ -38,4 +47,5 @@ public interface AdminRepository extends JpaRepository<User, Long> {
     
 
 
-} */
+}
+ */

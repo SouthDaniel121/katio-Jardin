@@ -1,19 +1,19 @@
-
- package edu.eafit.katio.models;
+/*
+ * 
+ * package edu.eafit.katio.models;
 
 import java.sql.Date;
 
 import org.springframework.data.annotation.Id;
 
-import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 public class Admin {
-@Entity
-
+    @Entity
 public class Log {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,15 +22,16 @@ public class Log {
     
     private Date timestamp;
     
-   
-    
+
 }
 
-//Eventos que pasen
 public enum LogEvent {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
+    BOOK_DOWNLOAD,
+    AUDIOBOOK_PLAY,
     AUTHOR_PROFILE_VIEW
 }
 }
 
+ */
