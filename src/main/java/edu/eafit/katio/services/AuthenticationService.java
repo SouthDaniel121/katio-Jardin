@@ -5,34 +5,35 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import edu.eafit.katio.dto.LoginUser;
-import edu.eafit.katio.models.User;
-import edu.eafit.katio.repository.UserRepository;
+import edu.eafit.katio.dtos.LoginUser;
+import edu.eafit.katio.models.Usuarios;
+import edu.eafit.katio.repository.UsuarioRepository;
+
 
 @Service
 public class AuthenticationService {
-private final UserRepository userRepository;
+private final UsuarioRepository usuarioRepository;
     
     private final PasswordEncoder passwordEncoder;
     
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationService(
-        UserRepository userRepository,
+        UsuarioRepository userRepository,
         AuthenticationManager authenticationManager,
         PasswordEncoder passwordEncoder
     ) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
+        this.usuarioRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User signup(User input) {
-        input.setPasshash(passwordEncoder.encode(input.getPassword()));
-        return userRepository.saveAndFlush(input);
+    public Usuarios signup(Usuarios input) {
+        input.setPassword(passwordEncoder.encode(input.getPassword()));
+        return usuarioRepository.saveAndFlush(input);
     }
 
-    public User authenticate(LoginUser input) {
+    public Usuarios authenticate(LoginUser input) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         input.getEmail(),
@@ -40,7 +41,7 @@ private final UserRepository userRepository;
                 )
         );
 
-        return userRepository.findByUserName(input.getEmail())
+        return usuarioRepository.findByUsername(input.getEmail())
                 .orElseThrow();
     }
 }
