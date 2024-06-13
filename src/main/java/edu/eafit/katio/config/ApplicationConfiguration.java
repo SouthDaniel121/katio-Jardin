@@ -9,21 +9,20 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import edu.eafit.katio.repository.UserRepository;
+import edu.eafit.katio.repository.UsuarioRepository;
 import edu.eafit.katio.services.Blake3PasswordEncoder;
 
 @Configuration
 public class ApplicationConfiguration {
-    private final UserRepository userRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public ApplicationConfiguration(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ApplicationConfiguration(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
     }
 
     @Bean
     UserDetailsService userDetailsService() {
-        return username -> userRepository.findByUserName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return username -> usuarioRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
     @Bean
