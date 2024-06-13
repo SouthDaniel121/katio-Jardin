@@ -1,4 +1,4 @@
-package edu.eafit.katio.repository;
+/*package edu.eafit.katio.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -38,4 +38,4 @@ public interface AdminRepository extends JpaRepository<User, Long> {
     
 
 
-}
+} */

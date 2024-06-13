@@ -12,7 +12,8 @@ public interface UserRepository extends CrudRepository<User, Integer>{
     
     public Optional<User> getUserById(Long id);
       
-    
+   
+
     @Query(nativeQuery = true, value = "SELECT * FROM users where Email = :username")
     Optional<User> findByUserName(String username);
 

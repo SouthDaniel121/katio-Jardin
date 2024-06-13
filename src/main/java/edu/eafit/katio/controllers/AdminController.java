@@ -1,4 +1,6 @@
+
 package edu.eafit.katio.controllers;
+
 
 import java.util.List;
 
@@ -54,7 +56,7 @@ public class AdminController {
         return adminService.editUser(id, user);
     }
     
-
+    
     /**
      * 
      * @param id

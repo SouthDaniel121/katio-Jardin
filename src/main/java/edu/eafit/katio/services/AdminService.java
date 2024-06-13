@@ -1,4 +1,5 @@
-package edu.eafit.katio.services;
+/*
+ * package edu.eafit.katio.services;
 
 import java.util.List;
 
@@ -41,3 +42,4 @@ public class AdminService {
 
  
 }
+ */
