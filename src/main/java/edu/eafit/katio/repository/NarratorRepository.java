@@ -1,38 +1,40 @@
 package edu.eafit.katio.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
-import edu.eafit.katio.models.Narrator;
+import edu.eafit.katio.models.Narrators;
 
-@Repository
-public interface NarratorRepository extends CrudRepository<Narrator, Long> {
-
-    @Query(nativeQuery = true,
-    value = "SELECT * FROM NARRATOR")
-    Narrator getAllNarrator();
-
-
-    @Query(nativeQuery = true, 
-        value = "SELECT * FROM BOOKS WHERE id = :id")
-    Narrator findById(@Param("id") long id);
-
-    @Query(nativeQuery = true, 
-        value = "SELECT * FROM BOOKS WHERE name LIKE %:name%")
-    Iterable<Narrator> findByName(@Param("name") String name);
-
-    public static Narrator saveAndFlush(Narrator narrator) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveAndFlush'");
-    }
+public interface NarratorRepository extends CrudRepository<Narrators, Long> {
     
- static List<Narrator>getAllNarrator(String name) {
-        throw new UnsupportedOperationException("Unimplemented method 'getnarrator'");
-    }
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM NARRATORS WHERE Id like %:id%") 
+    List<Narrators> findById(@Param("id") Integer id);
 
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM NARRATORS WHERE Name like %:name%") 
+    List<Narrators> findByName(@Param("name") String name);
 
-} 
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM NARRATORS WHERE Name like %:name%") 
+    Optional<Narrators> findByNameOpt(@Param("name") String name);
+
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM NARRATORS WHERE Lastname like %:lastname%") 
+    List<Narrators> findByLastName(@Param("lastname") String lastName);
+
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM NARRATORS WHERE Genre like %:genre%") 
+    List<Narrators> findByGenre(@Param("genre") String genre);
+
+    Narrators saveAndFlush(Narrators narrators);
+}

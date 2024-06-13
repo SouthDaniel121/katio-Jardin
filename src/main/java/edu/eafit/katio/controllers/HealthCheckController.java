@@ -14,7 +14,7 @@ import edu.eafit.katio.services.BookService;
 
 @RestController
 @RequestMapping("/katio/health")
-public class HealthCheck {
+public class HealthCheckController {
 
     @Autowired
     private BookRepository _BookRepository;

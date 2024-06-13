@@ -5,15 +5,16 @@ COLLATE = `uca1400_spanish_ai_ci`;
 
 Use Katio;
 
-CREATE TABLE Users
+CREATE TABLE usuarios
 (
     Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Name NVARCHAR(255) NOT NULL,
-    Lastname NVARCHAR(255) NOT NULL,
-    Email NVARCHAR(255) NOT NULL,
-    Phone NVARCHAR(20) NOT NULL,
-    Identification NVARCHAR(20) NOT NULL,
-    Passhash NVARCHAR(255) NOT NULL,
+    Nombre VARCHAR(255) NOT NULL,
+    Apellido VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Telefono VARCHAR(20) NOT NULL,
+    Identificacion VARCHAR(20) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Username VARCHAR (255) NOT NULL,
     INDEX email_idx(Email)
 );
 
@@ -44,66 +45,45 @@ CREATE TABLE Books
         ON UPDATE RESTRICT
 );
 
+CREATE TABLE Narrators
+(
+    Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name NVARCHAR(255) NOT NULL,
+    Last_Name NVARCHAR(255) NOT NULL,
+    Genre NVARCHAR(255) NOT NULL,
+);
 CREATE TABLE Audiobooks
 (
     Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL,
     ISBN10 NVARCHAR(255) NOT NULL,
     ISBN13 NVARCHAR(255) NOT NULL,
-    Published Date NOT NULL,
+    Published DATE NOT NULL,
     Edition NVARCHAR(255) NOT NULL,
     Genre NVARCHAR(255) NOT NULL,
     Abridged BIT NOT NULL,
-    LengthInSeconds INT UNSIGNED NOT NULL,
+    Length_in_seconds INT UNSIGNED NOT NULL,
     Path NVARCHAR(255) NOT NULL,
     Author_Id INT UNSIGNED NOT NULL,
     CONSTRAINT `fk_audiobooks_author`
-        FOREIGN KEY (Author_Id) REFERENCES Authors (Id)
+        FOREIGN KEY (Author_Id) REFERENCES Authors(Id)
         ON DELETE CASCADE
         ON UPDATE RESTRICT
 );
 
-CREATE TABLE Narrator
-(
+-- Creacion de la tabla intermediaria de libros a libros
+
+CREATE TABLE BookByBook (
     Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Name NVARCHAR(255) NOT NULL,    
-    LastName NVARCHAR(255) NOT NULL,
-    Genre NVARCHAR(255) NOT NULL,
-    Languages NVARCHAR(255) NOT NULL    
-);
+    Id_Book INT UNSIGNED NOT NULL,
+    Recommended_Id INT UNSIGNED NOT NULL,
 
-CREATE TABLE Books_Authors
-(
-  Book_id INT UNSIGNED NOT NULL,
-  Author_Id INT UNSIGNED NOT NULL,
-  CONSTRAINT `fk_books_id`
-  	FOREIGN KEY (Book_id) REFERENCES Books (Id)
-  	ON DELETE CASCADE
-  	ON UPDATE RESTRICT,
-  CONSTRAINT `fk_authors_id`
-  	FOREIGN KEY (Author_Id) REFERENCES Authors (Id)
-  	ON DELETE CASCADE
-  	ON UPDATE RESTRICT  
-);
+    CONSTRAINT fk_Book
+        FOREIGN KEY (Id_Book) REFERENCES Books (Id)
+        ON DELETE CASCADE
+        ON UPDATE RESTRICT,
 
-ALTER TABLE Books DROP FOREIGN KEY IF EXISTS fk_book_author;
-ALTER TABLE Books DROP COLUMN IF EXISTS Author_id;
-
-
-CREATE VIEW Book_author_view AS
-SELECT 
-	bk.id as Book_id, 
-  bk.name as book_name, 
-  au.id as Author_id, 
-  CONCAT(au.name, " ", au.lastname) as Author_name 
-FROM Books_authors ba
-JOIN Books bk ON bk.id = ba.book_id
-JOIN Authors au ON au.id = ba.author_id;
-
-
-ALTER TABLE IF EXISTS Users 
-	ADD COLUMN IF NOT EXISTS Role_Id nvarchar(10) NOT NULL;
-
-
-
-
+    CONSTRAINT fk_Recommended
+        FOREIGN KEY (Recommended_Id) REFERENCES Books (Id)
+        ON DELETE CASCADE
+        ON UPDATE RESTRICT

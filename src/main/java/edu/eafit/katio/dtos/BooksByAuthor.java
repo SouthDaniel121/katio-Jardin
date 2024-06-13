@@ -1,15 +1,15 @@
-package edu.eafit.katio.dto;
+package edu.eafit.katio.dtos;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class BookByAuthor {
+public class BooksByAuthor {
     
     @Id
-    @Column(name="id_book")
-    private long IdBook;
+    @Column(name ="id_book")
+    private Long IdBook;
 
     @Column(name="book_name")
     private String BookName;
@@ -20,11 +20,15 @@ public class BookByAuthor {
     @Column(name="Author_Name")
     private String Author;
 
-    public long getIdBook() {
+
+    
+    //Getters and Setters
+
+    public Long getIdBook() {
         return IdBook;
     }
 
-    public void setIdBook(long idBook) {
+    public void setIdBook(Long idBook) {
         IdBook = idBook;
     }
 
@@ -51,4 +55,7 @@ public class BookByAuthor {
     public void setAuthor(String author) {
         Author = author;
     }
+
+
+
 }

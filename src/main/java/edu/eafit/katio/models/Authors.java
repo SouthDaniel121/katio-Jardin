@@ -5,10 +5,11 @@ import java.sql.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 
-@Entity
+
+    @Entity
 @Table(name="Authors")
 public class Authors {
     
@@ -53,3 +54,5 @@ public class Authors {
     }
     
 }
+ 
+

@@ -1,50 +1,56 @@
 package edu.eafit.katio.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Narrator")
-public class Narrator {
+@Table(name = "narrators")
+public class Narrators {
+
     @Id
-    private long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer Id;
     private String Name;
-    private String LastName;
-    private Languages Languages;
+    private String Lastname;
     private String Genre;
 
 
-    public long getId() {
+    // Getters and Setters
+    public Integer getId() {
         return Id;
     }
-    public void setId(long id) {
+
+    public void setId(Integer id) {
         Id = id;
     }
+
     public String getName() {
         return Name;
     }
+
     public void setName(String name) {
         Name = name;
     }
-    public String getLastName() {
-        return LastName;
+
+    public String getLastname() {
+        return Lastname;
     }
-    public void setLastName(String lastName) {
-        LastName = lastName;
+
+    public void setLastname(String lastname) {
+        Lastname = lastname;
     }
-    public Languages getLanguages() {
-        return Languages;
-    }
-    public void setLanguages(Languages languages) {
-        Languages = languages;
-    }
+
     public String getGenre() {
         return Genre;
     }
+
     public void setGenre(String genre) {
         Genre = genre;
     }
 
-
+    // Getters and Setters
+    
 }

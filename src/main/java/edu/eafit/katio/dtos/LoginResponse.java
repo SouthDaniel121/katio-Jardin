@@ -1,8 +1,7 @@
-package edu.eafit.katio.dto;
+package edu.eafit.katio.dtos;
 
 public class LoginResponse {
     private String token;
-
     private long expiresIn;
 
     public String getToken() {

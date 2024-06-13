@@ -1,15 +1,15 @@
 package edu.eafit.katio.interfaces;
 
-import java.util.Optional;
-
-import edu.eafit.katio.models.Narrator;
+import edu.eafit.katio.models.Narrators;
 
 public interface BaseNarratorService {
-    
-    Iterable<Narrator> getAllNarrator();
-    Narrator addNarrator(Narrator narrator);
-    Optional<Narrator> geNarratorById(Integer id);
-    
-    
+    Iterable<Narrators> getAllNarrators();
+    Iterable<Narrators> getNarratorsById(Integer Id);
+    Iterable<Narrators> getNarratorsByName(String Name);
+    Iterable<Narrators> getNarratorsByLastName(String LastName);
+    Iterable<Narrators> getNarratorsByGenre(String Genre);
+
+    Narrators addNarrators(Narrators narrators);
+
+    Narrators updateNarrators(String name, Narrators narrators);
 }
- 

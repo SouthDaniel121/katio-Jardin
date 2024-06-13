@@ -1,16 +1,22 @@
 package edu.eafit.katio.interfaces;
 
-import edu.eafit.katio.dto.BookByAuthor;
+import java.util.List;
+
+import edu.eafit.katio.dtos.BooksByAuthor;
 import edu.eafit.katio.models.Books;
 
 public interface BaseBookService {
     Iterable<Books> getAllBooks();
-    Iterable<Books> getAllBooksByAuthor(int idAuthor);
-    Iterable<BookByAuthor> getAllBooksByAuthor(String Name, String Lastname);
     Iterable<Books> getBooksByName(String Name);
+    List<Books> getBooksByEdition(String Name);
+    List<Books> getBooksByGenre(String Genre);
+    List<Books> getBooksById(Integer Id);
 
-   
-    Books getBookById(long id);
-    Books addBook(Books book);
+    Books addBooks(Books books);
+
+    Books updateBook(String name, Books updateBooks);
+
+    List<BooksByAuthor> getAllBooksByAuthorId(Integer idAuthor);
+    List<BooksByAuthor> getAllBooksByAuthorName(String nameAuthor);
+    List<BooksByAuthor> getAllBooksByAuthor(String nameAuthor, String lastNameAuthor);
 }
-

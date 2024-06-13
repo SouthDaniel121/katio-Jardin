@@ -10,42 +10,32 @@ public class AuthorService implements BaseAuthorService {
 
     private AuthorRepository _AuthorRepository;
 
-    public AuthorService(AuthorRepository authorRepository) {
-        _AuthorRepository = authorRepository;
-    }
-
-    @Override
-    public Iterable<Authors> getAllAuthors() {
-        var authorList = _AuthorRepository.findAll();
-        return authorList;
-    }
-
-
-    @Override
-    public Authors addAuthor(Authors author) {
-        return _AuthorRepository.save(author);
-    }
-
+    public AuthorService(AuthorRepository _AuthorRepository) {
+        this._AuthorRepository = _AuthorRepository;
     
-    @Override
-    public Iterable<Authors> findByCountry(String country) {
-        return _AuthorRepository.findByCountry(country);
     }
 
-    public Iterable<Authors> getAuthorsByName(String name) {
-        return _AuthorRepository.findByName(name);
+    @Override
+    public Authors addAuthors(Authors authors) {
+        return _AuthorRepository.save(authors);
+        
     }
 
     @Override
     public Optional<Authors> getAuthorById(Long id) {
         return _AuthorRepository.findById(id);
+       
     }
 
-    public Iterable<Authors> findByName(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
+    @Override
+    public Iterable<Authors> getAuthorByName(String name) {
+        return _AuthorRepository.findByName(name);
+       
     }
 
- 
-    
+    @Override
+    public Iterable<Authors> getAuthorByCountry(String country) {
+        return _AuthorRepository.findByCountry(country);
+        
+    }
 }

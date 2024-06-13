@@ -1,10 +1,8 @@
-package edu.eafit.katio.dto;
+package edu.eafit.katio.dtos;
 
 public class RegisterUserDto {
-    private String email;
-    
-    private String password;
-    
+    private String email;    
+    private String password;    
     private String fullName;
 
     public String getEmail() {
