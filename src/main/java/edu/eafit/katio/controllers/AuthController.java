@@ -11,34 +11,49 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.eafit.katio.dtos.LoginResponse;
 import edu.eafit.katio.dtos.LoginUser;
 import edu.eafit.katio.models.Usuarios;
-import edu.eafit.katio.repository.UsuarioRepository;
+import edu.eafit.katio.repositories.UsuarioRepository;
 import edu.eafit.katio.services.AuthenticationService;
 import edu.eafit.katio.services.JwtService;
 
 @RestController
 @RequestMapping("/katio/auth")
 @CrossOrigin(origins = "*")
-
 public class AuthController {
 
-    //Se declara el token y aut ↓
+
+
+    //EL JWT TOKEN SIRVE PARA MEJORAR LA SEGURIDAD DEVOLVIENDO UNA ENCRIPTACION 
+    //QUE ESA ENCRIPTACION LA HACE DE MANERA ALEATORIA,
+    //CUAL CLAVE SE DENOMINA O SE LLAMA TOKEN, TU LLAVE DE ACCESO.
+    //Requiere estar logueado*
+
+
     private final JwtService _jwtService;
     private final AuthenticationService _authService;
 
     @Autowired
-    //Se Declara el repositorio ↓
     private UsuarioRepository usuarioRepository;
 
-       //Se crea un constructor de servicio ↓
     public AuthController(JwtService jwtService, AuthenticationService authService){
         _jwtService = jwtService;
         _authService = authService;
     }
 
+
+
+
+    //LOS DOS TIENEN QUE SER METODO SOLO DE ENVIO COMO ACTUALIZACION 
+    //NO PODEMOS DEVOLVER INFORMACION EN PUBLICO TIPO COMUN COMPARAR LA CONTRASENA 
+
+
+
+
+
     /**
-     * 
+     * Este controlador es el principal de REGISTRO para poder paso en la 
+     * pagina o perfil autorizado 
      * @param registerUserDto
-     * @return Retorne registrado en la db
+     * @return → Usuario creado
      */
     @PostMapping("/signup")
     public ResponseEntity<Usuarios> register(@RequestBody Usuarios registerUserDto) {
@@ -47,10 +62,14 @@ public class AuthController {
         return ResponseEntity.ok(registeredUser);
     }
 
+
     /**
+     *  Este controlador es el principal de INICIO DE SESION para poder paso en la 
+     * pagina o perfil autorizado 
      * 
      * @param loginUser
-     * @return Token para poder navegar 
+     *
+     * @return → Login exitoso.
      */
     @PostMapping("/signin")
     public ResponseEntity<?> autehnticationUser(@RequestBody LoginUser loginUser){//@RequestBody AuthRequest authRequest){

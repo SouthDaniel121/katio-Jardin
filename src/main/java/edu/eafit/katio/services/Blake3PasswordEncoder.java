@@ -11,14 +11,14 @@ public class Blake3PasswordEncoder implements PasswordEncoder {
 
     @Override
     public String encode(CharSequence rawPassword) {
-            
+
         try {
             return blake3Formatter(rawPassword.toString());
         } catch (NoSuchAlgorithmException e) {
             System.out.println("[ERROR]: No such algorithm " + e.getMessage());
         }
         return "";
-        
+
     }
 
     @Override

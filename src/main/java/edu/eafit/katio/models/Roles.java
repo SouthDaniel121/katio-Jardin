@@ -1,11 +1,11 @@
 package edu.eafit.katio.models;
 
+//Determina solo roles que hay en la base de datos con enum
+
 public enum Roles {
-    ADMINISTRADOR,
-    DOCENTE,
-    ESTUDIANTE,
-    FAMILIA,
-    BIBLIOTECARIO,
-    OTRO
+   Estudiante,
+   Profesor,
+   Entidad,
+   Otro
     
 }

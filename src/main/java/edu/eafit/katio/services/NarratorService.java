@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import edu.eafit.katio.interfaces.BaseNarratorService;
 import edu.eafit.katio.models.Narrators;
-import edu.eafit.katio.repository.NarratorRepository;
+import edu.eafit.katio.repositories.NarratorRepository;
 
 public class NarratorService implements BaseNarratorService {
     
@@ -21,13 +21,7 @@ public class NarratorService implements BaseNarratorService {
         return narratorList;
     }
 
-    // Traer Narradores por Id
-    @Override
-    public Iterable<Narrators> getNarratorsById(Integer Id) {
-        var narratorList = _narratorRepository.findById(Id);
-        return narratorList;
-    }
-
+    
     // Traer Narradores por Nombre
     @Override 
     public Iterable<Narrators> getNarratorsByName(String Name) {
@@ -48,6 +42,14 @@ public class NarratorService implements BaseNarratorService {
         var narratorList = _narratorRepository.findByGenre(Genre);
         return narratorList;
     }
+
+    // Traer Narradores por Id
+    @Override
+    public Iterable<Narrators> getNarratorsById(Integer Id) {
+        var narratorList = _narratorRepository.findById(Id);
+        return narratorList;
+    }
+
 
     // Crear Narrador
     @Override 

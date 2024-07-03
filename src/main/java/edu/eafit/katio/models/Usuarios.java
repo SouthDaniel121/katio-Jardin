@@ -15,7 +15,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Usuarios implements UserDetails{
-    
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,28 +27,11 @@ public class Usuarios implements UserDetails{
     private String Email;
     private String Telefono;
     private String Identificacion;
-    private String Password; // Password. 
-      private String Username;
-
-   // @Enumerated(EnumType.STRING) //indicar a JPA que los valores del enum deben almacenarse como cadenas en la base de datos.
-    /*private Roles Role;
-  
+    private String Password;  
+    private String Username;
 
 
  
-    
-    public Roles getRole() {
-        return Role;
-    }
-
-    public void setRole(Roles role) {
-        Role = role;
-    }
- 
-
-    public String getUsername() {
-        return Username;
-    }*/
     public void setUsername(String username) {
         Username = username;
     }   
@@ -62,10 +45,9 @@ public class Usuarios implements UserDetails{
         return Nombre;
     }
     public void setNombre(String nombre) {
-        
+
         Nombre = nombre;
     }
-   
 
 
     public String getPassword() {
@@ -108,11 +90,7 @@ public class Usuarios implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
-   /*  @Override
-    public String getPassword() {
-        return Password;
-    }*/
-   
+
     @Override
     public String getUsername() {
         return Email;
@@ -134,5 +112,5 @@ public class Usuarios implements UserDetails{
         return true;
     }
 
-   
+
 }

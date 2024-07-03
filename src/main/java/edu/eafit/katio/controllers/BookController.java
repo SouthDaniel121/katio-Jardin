@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.eafit.katio.dtos.BooksByAuthor;
+import edu.eafit.katio.dtos.GenreInsertdto;
 import edu.eafit.katio.models.Books;
-import edu.eafit.katio.repository.BookRepository;
-import edu.eafit.katio.repository.BooksByAuthorRepository;
+import edu.eafit.katio.repositories.BookRepository;
+import edu.eafit.katio.repositories.BooksByAuthorRepository;
+import edu.eafit.katio.repositories.GenreByBookRepository;
 import edu.eafit.katio.services.BookService;
 
 
@@ -31,17 +33,95 @@ public class BookController {
     @Autowired
     private BookRepository _bookRepository;
 
-    @Autowired //Se declara el repositorio
+    @Autowired
     private BooksByAuthorRepository _BooksByAuthorRepository;
 
+    @Autowired
+    private GenreByBookRepository _GenreByBookRepository;
 
+
+
+
+
+      // BooksByAuthor
 
     /**
-     * 
-     * @param books
-     * @return 
+     * Metodo GET
+     * Este controlador nos sirve para conocer todos los libros por el author
+     * @param idAuthor
+     * @return → Libros por id del author
      */
-    @PostMapping("/add")
+  
+     @GetMapping("/getByAuthorId/{Id}")
+     public ResponseEntity<Iterable<BooksByAuthor>> getAllBooksByAuthorId(@PathVariable("Id") Integer idAuthor)
+     {
+         var response = new BookService(_BooksByAuthorRepository).getAllBooksByAuthorId(idAuthor);
+         return new ResponseEntity<Iterable<BooksByAuthor>>(response, HttpStatus.OK);
+     }
+ 
+     /**
+      * Metodo GET
+      * Nos ayuda a traer libnro por nombre de author
+      * @param nameAuthor
+      * @return → books por nombre == nombre del libro ingresado. (Por Postman)
+      */
+     @GetMapping("/getByAuthorName/{Name}")
+     public ResponseEntity<Iterable<BooksByAuthor>> getAllBooksByAuthorName(@PathVariable("Name") String nameAuthor) 
+     {
+         var response = new BookService(_BooksByAuthorRepository).getAllBooksByAuthorName(nameAuthor);
+         return new ResponseEntity<Iterable<BooksByAuthor>>(response, HttpStatus.OK);
+     }
+ 
+     /**
+      * Metodo GET 
+      * Este controlador nos ayuda a buscar por nombre y apellido del author
+      * @param nameAuthor
+      * @param lastNameAuthor
+      * @return nombre de author == Libros por nombre de author ingresado. (Por Postman)
+      */
+     // Traer Libros por Nombre y Apellido del Autor
+     @GetMapping("/getByAuthor/{Name}/{LastName}")
+     public ResponseEntity<Iterable<BooksByAuthor>> getAllBooksByAuthor(@PathVariable("Name") String nameAuthor, @PathVariable("LastName") String lastNameAuthor)
+     {
+         var response = new BookService(_BooksByAuthorRepository).getAllBooksByAuthor(nameAuthor, lastNameAuthor);
+         return new ResponseEntity<Iterable<BooksByAuthor>>(response, HttpStatus.OK);
+     }
+ 
+     /**
+      * Metodo Post Crear
+      * Esto nos sirve para crear un nuevo genero de libro en la db 
+      * @param genre
+      * @return Genero No creado 
+      * @return Genero Creado 
+      */
+     @PostMapping("/addGenres")
+     public ResponseEntity<?> addGenres(@RequestBody GenreInsertdto genre){
+         var response = new BookService(_bookRepository, _GenreByBookRepository).addGenre(genre);
+         if(!response){
+             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+         }
+         return new ResponseEntity<>(response, HttpStatus.OK);
+     }
+ 
+
+
+
+
+
+
+    //Libros
+
+
+   
+    /**
+     * 
+     * Metodo POST Actualizacion
+     * Este controlador es para crear un libro nuevo
+     * @param books
+     * @return Libro Creado
+     * @return Libro No Creado
+     */
+    @PutMapping("/add")
     public ResponseEntity<Books> addBooks(@RequestBody Books books) {
         try {
             Books creatBook = new BookService(_bookRepository) .addBooks(books);
@@ -51,26 +131,29 @@ public class BookController {
         }
     }
 
+    
+
     /**
-     * 
+     * METODO Post actualizar
+     * Nos sirve para poder actualizar o cambiar algun dato del un libro.
      * @param name
      * @param updateBooks
-     * @return libro actualizado 
-     * @return No se encontro el libro
+     * @return → Book == Book actualizado.
      */
-    @PutMapping("/update/{name}")
+    @PostMapping("/update/{name}")
     public ResponseEntity<Object> updateBooks(@PathVariable("name") String name, @RequestBody Books updateBooks) {
         Books updatedBook = new BookService(_bookRepository) .updateBook(name, updateBooks);
         if (updatedBook != null) {
             return new ResponseEntity<>(updatedBook, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("No se encontro el libro", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Libro no Encontrado", HttpStatus.NOT_FOUND);
         }
     }
 
     /**
-     * 
-     * @return Todos los libros
+     * Metodo GET
+     * Nos sirve para ver todos los libros existentes 
+     * @return → Todos los libros existentes en la db 
      */
     @GetMapping("/getall")
     public ResponseEntity<Iterable<Books>> getAllBooks() 
@@ -79,35 +162,11 @@ public class BookController {
         return new ResponseEntity<Iterable<Books>>(books, HttpStatus.OK);
     }
 
- /**
-     * 
-     * @param nameAuthor
-     * @return traer Libros por nombre del author
-     */
-    @GetMapping("/getByAuthorName/{Name}")
-    public ResponseEntity<Iterable<BooksByAuthor>> getAllBooksByAuthorName(@PathVariable("Name") String nameAuthor) 
-    {
-        var response = new BookService(_BooksByAuthorRepository).getAllBooksByAuthorName(nameAuthor);
-        return new ResponseEntity<Iterable<BooksByAuthor>>(response, HttpStatus.OK);
-    }
-
     /**
-     * 
-     * @param nameAuthor
-     * @param lastNameAuthor
-     * @return trae libros por nombre completo del author
-     */
-    @GetMapping("/getByAuthor/{Name}/{LastName}")
-    public ResponseEntity<Iterable<BooksByAuthor>> getAllBooksByAuthor(@PathVariable("Name") String nameAuthor, @PathVariable("LastName") String lastNameAuthor)
-    {
-        var response = new BookService(_BooksByAuthorRepository).getAllBooksByAuthor(nameAuthor, lastNameAuthor);
-        return new ResponseEntity<Iterable<BooksByAuthor>>(response, HttpStatus.OK);
-    }
-
-    /**
-     * 
+     * Metodo GET
+     * Nos sirve para traer un libro especifico y unico
      * @param Id
-     * @return libros introducido por id (/getById/1)
+     * @return → Traer libro == Id libro ingresado. (POR POSTMAN)
      */
     @GetMapping("/getById/{Id}")
     public ResponseEntity<Iterable<Books>> getBooksById(@PathVariable ("Id") Integer Id)
@@ -116,11 +175,12 @@ public class BookController {
         return new ResponseEntity<Iterable<Books>>(response, HttpStatus.OK);
     }
 
-   /**
-    * 
-    * @param Name
-    * @return libro por busqueda por nombre
-    */
+    /**
+     * Metodo GET
+     * Traer libro por nombre ingresado 
+     * @param Name
+     * @return → Libros por nombre == nombre ingresado (Por postman)
+     */
     @GetMapping("/getByName/{Name}")
     public ResponseEntity<Iterable<Books>> getBookByName(@PathVariable ("Name") String Name)
     {
@@ -128,11 +188,14 @@ public class BookController {
         return new ResponseEntity<Iterable<Books>>(response, HttpStatus.OK);
     }
 
-   /**
-    * 
-    * @param Edition
-    * @return Traer Libros por editorial 
-    */
+
+
+    /**
+     * Metodo GET
+     * Este controlador nos sirve para traer los libros por edition
+     * @param Edition
+     * @return → Edition libro == libro edition ingresada. (Por Postman)
+     */
     @GetMapping("/getByEdition/{Edition}")
     public ResponseEntity<Iterable<Books>> getBooksByEdition(@PathVariable ("Edition") String Edition)
     {
@@ -140,10 +203,13 @@ public class BookController {
         return new ResponseEntity<Iterable<Books>>(response, HttpStatus.OK);
     }
 
+
+
     /**
-     * 
+     * Metodo GET
+     * Este controlador nos sirve para traer libros por el genero 
      * @param Genre
-     * @return libro por genero introducido
+     * @return → libros con genero == libros por genero ingresado. (Por Postman)
      */
     @GetMapping("/getByGenre/{Genre}")
     public ResponseEntity<Iterable<Books>> getBooksByGenre(@PathVariable ("Genre") String Genre)
@@ -152,14 +218,13 @@ public class BookController {
         return new ResponseEntity<Iterable<Books>> (response, HttpStatus.OK);
     }
 
-
-
-   /**
-    * 
-    * @param startDate
-    * @param endDate
-    * @return Libro por fecha. Es un rango de fechas.
-    */
+    /**
+     * Metodo GET
+     * Esto controlador nos sirve para poder tener un libro por rango de fechas minima  maxima
+     * @param startDate
+     * @param endDate
+     * @return → libros con Rango de fechas minima y maxima
+     */
     @GetMapping("/getByDate/{startDate}/{endDate}")
     public ResponseEntity<List<Books>> getBooksByDate(
             @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
@@ -168,17 +233,4 @@ public class BookController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    /**
-     * 
-     * @param idAuthor
-     * @return author por el id introducido
-     */
-    @GetMapping("/getByAuthorId/{Id}")
-    public ResponseEntity<Iterable<BooksByAuthor>> getAllBooksByAuthorId(@PathVariable("Id") Integer idAuthor)
-    {
-        var response = new BookService(_BooksByAuthorRepository).getAllBooksByAuthorId(idAuthor);
-        return new ResponseEntity<Iterable<BooksByAuthor>>(response, HttpStatus.OK);
-    }
-
-   
 }

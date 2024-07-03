@@ -50,8 +50,9 @@ CREATE TABLE Narrators
     Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL,
     Last_Name NVARCHAR(255) NOT NULL,
-    Genre NVARCHAR(255) NOT NULL,
+    Genre NVARCHAR(255) NOT NULL
 );
+
 CREATE TABLE Audiobooks
 (
     Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -71,7 +72,41 @@ CREATE TABLE Audiobooks
         ON UPDATE RESTRICT
 );
 
--- Creacion de la tabla intermediaria de libros a libros
+CREATE TABLE Genres
+(
+    Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL
+);
+
+
+CREATE TABLE Books_Genres
+(
+  Book_id INT UNSIGNED NOT NULL,
+  Genre_Id INT UNSIGNED NOT NULL,
+  CONSTRAINT `fk_books_genres_id`
+  	FOREIGN KEY (Book_id) REFERENCES Books (Id)
+  	ON DELETE CASCADE
+  	ON UPDATE RESTRICT,
+  CONSTRAINT `fk_genre_books_id`
+  	FOREIGN KEY (Genre_Id) REFERENCES Genres (Id)
+  	ON DELETE CASCADE
+  	ON UPDATE RESTRICT  
+);
+
+
+CREATE TABLE AudioBooks_Authors 
+(
+  audiobook_id INT UNSIGNED NOT NULL,
+  author_id INT UNSIGNED NOT NULL,
+  CONSTRAINT `fk_audiobooks_id`
+  	FOREIGN KEY (audiobook_id) REFERENCES Audiobooks (Id)
+  	ON DELETE CASCADE 
+  	ON UPDATE RESTRICT,
+  CONSTRAINT `fk_authors_id`
+  	FOREIGN KEY (author_id) REFERENCES Authors (ID)
+  	ON DELETE CASCADE
+  	ON UPDATE RESTRICT 
+);
 
 CREATE TABLE BookByBook (
     Id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -79,11 +114,12 @@ CREATE TABLE BookByBook (
     Recommended_Id INT UNSIGNED NOT NULL,
 
     CONSTRAINT fk_Book
-        FOREIGN KEY (Id_Book) REFERENCES Books (Id)
-        ON DELETE CASCADE
-        ON UPDATE RESTRICT,
+    FOREIGN KEY (Id_Book) REFERENCES Books (Id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
 
     CONSTRAINT fk_Recommended
-        FOREIGN KEY (Recommended_Id) REFERENCES Books (Id)
-        ON DELETE CASCADE
-        ON UPDATE RESTRICT
+    FOREIGN KEY (Recommended_Id) REFERENCES Books (Id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+);

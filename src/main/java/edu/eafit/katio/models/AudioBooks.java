@@ -20,26 +20,36 @@ public class AudioBooks {
     private String ISBN13;
     private Date Published;
     private String Edition;
-    private String Genre;
-
-
-    private Boolean Abridged; //resumido o no 
+    private Boolean Abridged;
     @Column(name="LengthInSeconds")
-    private Long LengthInSeconds; // duracion en segundos 
-    private String Path; //donde esta ese libro en el disco 
-    //private Long NarratorId; // narrador //Se quita narrador porque se hace un modelo independiente 
-    @Column(name="author_id")
-    private Long AuthorId;
-    //private Languajes Languajes; // Enumeracion con el lenguaje del libro //Se quita Languajes porque se hace un cotrolador
+    private Long LengthInSeconds;
+    private String Path;
 
+    public AudioBooks() {
+    }
+    
     public String getTimeNotation(){
-        //var minutos = this.LengthInSeconds / 60;
+       
+        
         var horas = this.LengthInSeconds / 3600;
         return "Duracion: " + horas;
     }
-
     
     // Getters and Setters
+
+    public AudioBooks(long id, String name, String iSBN10, String iSBN13, Date published, String edition,
+            Boolean abridged, Long lengthInSeconds, String path) {
+        Id = id;
+        Name = name;
+        ISBN10 = iSBN10;
+        ISBN13 = iSBN13;
+        Published = published;
+        Edition = edition;
+        Abridged = abridged;
+        LengthInSeconds = lengthInSeconds;
+        Path = path;
+    }
+
 
     public long getId() {
         return Id;
@@ -89,13 +99,13 @@ public class AudioBooks {
         Edition = edition;
     }
 
-    public String getGenre() {
+    /*public String getGenre() {
         return Genre;
     }
 
     public void setGenre(String genre) {
         Genre = genre;
-    }
+    }*/
 
     public Boolean getAbridged() {
         return Abridged;
@@ -129,11 +139,11 @@ public class AudioBooks {
     //    NarratorId = narratorId;
     //}
 
-    public Long getAuthorId() {
+    /*public Long getAuthorId() {
         return AuthorId;
     }
 
     public void setAuthorId(Long authorId) {
         AuthorId = authorId;
-    }
+    }*/
 }

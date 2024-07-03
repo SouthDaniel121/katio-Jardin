@@ -3,6 +3,7 @@ package edu.eafit.katio.interfaces;
 import java.util.List;
 
 import edu.eafit.katio.dtos.BooksByAuthor;
+import edu.eafit.katio.dtos.GenreInsertdto;
 import edu.eafit.katio.models.Books;
 
 public interface BaseBookService {
@@ -15,6 +16,8 @@ public interface BaseBookService {
     Books addBooks(Books books);
 
     Books updateBook(String name, Books updateBooks);
+
+    boolean addGenre(GenreInsertdto genreInsertdto);
 
     List<BooksByAuthor> getAllBooksByAuthorId(Integer idAuthor);
     List<BooksByAuthor> getAllBooksByAuthorName(String nameAuthor);

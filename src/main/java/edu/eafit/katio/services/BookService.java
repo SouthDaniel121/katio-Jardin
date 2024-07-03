@@ -6,15 +6,19 @@ import java.util.List;
 import java.util.Optional;
 
 import edu.eafit.katio.dtos.BooksByAuthor;
+import edu.eafit.katio.dtos.GenreByBook;
+import edu.eafit.katio.dtos.GenreInsertdto;
 import edu.eafit.katio.interfaces.BaseBookService;
 import edu.eafit.katio.models.Books;
-import edu.eafit.katio.repository.BookRepository;
-import edu.eafit.katio.repository.BooksByAuthorRepository;
+import edu.eafit.katio.repositories.BookRepository;
+import edu.eafit.katio.repositories.BooksByAuthorRepository;
+import edu.eafit.katio.repositories.GenreByBookRepository;
 
 public class BookService implements BaseBookService {
     
     private BookRepository _bookRepository;
     private BooksByAuthorRepository _BooksByAuthorRepository;
+    private GenreByBookRepository _GenreByBookRepository;
 
     public BookService(BookRepository bookRepository){
         _bookRepository = bookRepository;
@@ -24,12 +28,44 @@ public class BookService implements BaseBookService {
     _BooksByAuthorRepository = booksByAuthorRepository;
     }
 
+    public BookService(BookRepository bookRepository, GenreByBookRepository genreByBookRepository){
+        _bookRepository = bookRepository;
+        _GenreByBookRepository = genreByBookRepository;
+    }
+
     // Traer todos los Libros
     @Override
     public Iterable<Books> getAllBooks() {
         var bookList = _bookRepository.findAll();
         return bookList;
     }
+
+     // Traer Libros por Nombre
+     @Override
+     public List<Books> getBooksByName(String Name) {
+         var bookList = _bookRepository.findByName(Name);
+         return bookList;
+     }
+ 
+     //Traer Libros por Editorial
+     @Override
+     public List<Books> getBooksByEdition(String Edition) {
+         var bookList = _bookRepository.findByEdition(Edition);
+         return bookList;
+     }
+ 
+     //Traer Libros por Genero
+     @Override
+     public List<Books> getBooksByGenre(String Genre) {
+         var bookList = _bookRepository.findByGenre(Genre);
+         return bookList;
+     }
+ 
+     // Traer libros por rango de fechas de publicación
+     public List<Books> getBooksByDateRange(Date startDate, Date endDate) {
+         var bookList = _bookRepository.findByPublishedDateBetween(startDate, endDate);
+         return bookList;
+     }
 
     // Traer Libros por Id
     @Override
@@ -38,32 +74,7 @@ public class BookService implements BaseBookService {
         return bookList;
     }
 
-    // Traer Libros por Nombre
-    @Override
-    public List<Books> getBooksByName(String Name) {
-        var bookList = _bookRepository.findByName(Name);
-        return bookList;
-    }
-
-    //Traer Libros por Editorial
-    @Override
-    public List<Books> getBooksByEdition(String Edition) {
-        var bookList = _bookRepository.findByEdition(Edition);
-        return bookList;
-    }
-
-    //Traer Libros por Genero
-    @Override
-    public List<Books> getBooksByGenre(String Genre) {
-        var bookList = _bookRepository.findByGenre(Genre);
-        return bookList;
-    }
-
-    // Traer libros por rango de fechas de publicación
-    public List<Books> getBooksByDateRange(Date startDate, Date endDate) {
-        var bookList = _bookRepository.findByPublishedDateBetween(startDate, endDate);
-        return bookList;
-    }
+   
 
     // Editar un Libro
     @Override
@@ -130,5 +141,23 @@ public class BookService implements BaseBookService {
             bookList = _BooksByAuthorRepository.findByAuthorFullName(lastNameAuthor, nameAuthor);
         }
         return bookList;
-    } 
+    }
+    
+    @Override
+    public boolean addGenre(GenreInsertdto genreInsertdto) {
+        var book = _bookRepository.findById(genreInsertdto.getBookId());
+        if(book.isEmpty()){
+            return false;
+        }
+
+        for (var item : genreInsertdto.getGenreList()) {
+            var genre = new GenreByBook();
+            genre.setBookid(book.get().getId());
+            genre.setGenreId(item.getId());
+            _GenreByBookRepository.saveAndFlush(genre);
+        }
+
+        return true;
+    }
+
 }

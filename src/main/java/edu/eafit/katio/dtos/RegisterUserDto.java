@@ -1,5 +1,11 @@
 package edu.eafit.katio.dtos;
 
+
+//El dto es para poder hacer
+//abstracción de datos eficientes al tiempo que promueven un acoplamiento flexible entre capas.
+//Los getters and setters
+
+
 public class RegisterUserDto {
     private String email;    
     private String password;    
