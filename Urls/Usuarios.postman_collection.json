@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "0a7fa03c-eecd-4987-9b78-c37b8f894f01",
+		"name": "Usuarios",
+		"description": "Debe estar Levantado Java\n\nAqui tenemos varios metodos\n\n→Todos los usuarios\n\n→Usuario por id",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34808146"
+	},
+	"item": [
+		{
+			"name": "Todos Los Usuarios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjU4ODUsImV4cCI6MTcxOTUzNDUyNX0.-QP6XK0hZcTg0a9R4VdNU_OwgmfcwXmM8axxKos_Jxc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/usuarios/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"usuarios",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario por id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjU4ODUsImV4cCI6MTcxOTUzNDUyNX0.-QP6XK0hZcTg0a9R4VdNU_OwgmfcwXmM8axxKos_Jxc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/usuarios/id?Id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"usuarios",
+						"id"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjU4ODUsImV4cCI6MTcxOTUzNDUyNX0.-QP6XK0hZcTg0a9R4VdNU_OwgmfcwXmM8axxKos_Jxc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Cantores\",\r\n    \"apellido\":\"Chipuco\",\r\n    \"email\":\"cantores@gmail.com\",\r\n    \"telefono\":\"3016589427\",\r\n    \"identificacion\":\"1033658754\",\r\n    \"password\":\"sanchochito\",\r\n    \"username\":\"Los chipuco\",\r\n    \"rol\":\"otro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/usuarios/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"usuarios",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjU4ODUsImV4cCI6MTcxOTUzNDUyNX0.-QP6XK0hZcTg0a9R4VdNU_OwgmfcwXmM8axxKos_Jxc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Los cantores\",\r\n    \"apellido\":\"Chipuco\",\r\n    \"email\":\"cantores@gmail.com\",\r\n    \"telefono\":\"3016589427\",\r\n    \"identificacion\":\"1033658754\",\r\n    \"password\":\"sanchochito\",\r\n    \"username\":\"Los De yolombo\",\r\n    \"rol\":\"otro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/usuarios/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"usuarios",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Por Nombre de usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjU4ODUsImV4cCI6MTcxOTUzNDUyNX0.-QP6XK0hZcTg0a9R4VdNU_OwgmfcwXmM8axxKos_Jxc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/usuarios/nombre?Nombre=Los cantores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"usuarios",
+						"nombre"
+					],
+					"query": [
+						{
+							"key": "Nombre",
+							"value": "Los cantores"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Identificacion de usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjU4ODUsImV4cCI6MTcxOTUzNDUyNX0.-QP6XK0hZcTg0a9R4VdNU_OwgmfcwXmM8axxKos_Jxc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/usuarios/identificacion?Identificacion=1033658754",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"usuarios",
+						"identificacion"
+					],
+					"query": [
+						{
+							"key": "Identificacion",
+							"value": "1033658754"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

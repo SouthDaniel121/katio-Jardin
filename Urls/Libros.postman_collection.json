@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "b1081c4d-c56d-42e8-8f28-ce4e364e577d",
+		"name": "Libros",
+		"description": "Aqui traeremos todos los datos sobre los libros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34808146"
+	},
+	"item": [
+		{
+			"name": "relacionandos con author",
+			"item": [
+				{
+					"name": "Id author= libros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk2MDUzMTcsImV4cCI6MTcxOTYxMzk1N30.EJmUwIq7Mm7kgH1oP-UxlZN-NhnLe3YIOkGDcLkpITM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/katio/books/getByAuthorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"katio",
+								"books",
+								"getByAuthorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/katio/books/getByAuthorName/{Name}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"katio",
+								"books",
+								"getByAuthorName",
+								"{Name}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nombre completo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/katio/books/getByAuthor/{Name}/{LastName}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"katio",
+								"books",
+								"getByAuthor",
+								"{Name}",
+								"{LastName}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agregar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0NTA2NjgsImV4cCI6MTcxOTQ1OTMwOH0.uJCefq2LqXCrdTAGM3crqI4ISeyTzxFXYQZC5M_WQ9c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Mas historias de Franz\",\r\n    \"isbn10\":\"9789580410140\",\r\n    \"isbn13\":\"9580410143\",\r\n    \"published\":\"2003-07-18\",\r\n    \"edition\":\"1ra Edicion\",\r\n    \"genre\":\"Cuentos Infantiles\",\r\n    \"deweyIndex\":\"800\",\r\n    \"authorId\":\"39\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/books/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Mas historias de Franz\",\r\n    \"isbn10\":\"9789580410140\",\r\n    \"isbn13\":\"9580410143\",\r\n    \"published\":\"2003-07-18\",\r\n    \"edition\":\"1ra Edicion\",\r\n    \"genre\":\"Cuentos Infantiles\",\r\n    \"deweyIndex\":\"800\",\r\n    \"authorId\":\"40\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/books/update/Mas historias de franz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"update",
+						"Mas historias de franz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Por Nombre de autor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByAuthorName/Gabriel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByAuthorName",
+						"Gabriel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nombre Y apellido author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByAuthor/Daniel/Orrego",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByAuthor",
+						"Daniel",
+						"Orrego"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Id Coincidencia",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getById/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getById",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nombre-Libro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByName/Cien",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByName",
+						"Cien"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edicion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByEdition/1ra edicion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByEdition",
+						"1ra edicion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Genero Literario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByGenre/Cronica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByGenre",
+						"Cronica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rango De Publicacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTkzNjYxMzUsImV4cCI6MTcxOTM3NDc3NX0.TxOJ01LqIp3S2RqAM5CzAU8BVkSDCvQjKNkxexoEbxM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByDate/1995-11-05/2020-12-04",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByDate",
+						"1995-11-05",
+						"2020-12-04"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Id author-libro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0Mzg3NTgsImV4cCI6MTcxOTQ0NzM5OH0.J7szuSAROt50NJaXo6XdNktPcB-ARhswoVI8vmdRxzg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/books/getByAuthorId/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"books",
+						"getByAuthorId",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

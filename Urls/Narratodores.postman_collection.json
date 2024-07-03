@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "4439a0c1-e989-4378-a14c-9d308805c65c",
+		"name": "Narratodores",
+		"description": "Debe estar levantado Java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34808146"
+	},
+	"item": [
+		{
+			"name": "Por nombre",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzYxMjksImV4cCI6MTcxOTU0NDc2OX0.yHtlhlNRI_isKBGn0z-I4tqURDphSmuhonFjnxYWCno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/getByName/norman",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"getByName",
+						"norman"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Por id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzYxMjksImV4cCI6MTcxOTU0NDc2OX0.yHtlhlNRI_isKBGn0z-I4tqURDphSmuhonFjnxYWCno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/getById/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"getById",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzYxMjksImV4cCI6MTcxOTU0NDc2OX0.yHtlhlNRI_isKBGn0z-I4tqURDphSmuhonFjnxYWCno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apellido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzYxMjksImV4cCI6MTcxOTU0NDc2OX0.yHtlhlNRI_isKBGn0z-I4tqURDphSmuhonFjnxYWCno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/getByLastName/Colors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"getByLastName",
+						"Colors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzE2MjEsImV4cCI6MTcxOTU0MDI2MX0.INSTn-E811jId-8SVPK5RqO7xwVr0NeD_QFyMkCyET8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\":\"Norman\",\r\n \"lastname\":\"Colors\",\r\n \"genre\":\"Masculino\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzYxMjksImV4cCI6MTcxOTU0NDc2OX0.yHtlhlNRI_isKBGn0z-I4tqURDphSmuhonFjnxYWCno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\":\"Juan Felipe\",\r\n \"lastname\":\"Castro\",\r\n \"genre\":\"Masculino\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/update/Juan Felipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"update",
+						"Juan Felipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Genero M | F",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MzYxMjksImV4cCI6MTcxOTU0NDc2OX0.yHtlhlNRI_isKBGn0z-I4tqURDphSmuhonFjnxYWCno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/narrators/getByGenre/masculino",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"narrators",
+						"getByGenre",
+						"masculino"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

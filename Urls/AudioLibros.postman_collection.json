@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "280c5898-cb14-4f14-a21d-2f4b862dba82",
+		"name": "AudioLibros",
+		"description": "Debe estar levantado java\n\n(GET)Traer Informacion y (Post)Agregar Audlibro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34808146"
+	},
+	"item": [
+		{
+			"name": "Todos los Audiolibros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1MjQzMzksImV4cCI6MTcxOTUzMjk3OX0.OvVxAmOvQ1Io_iF4z7h8v3rohNVn4OHyPsb_gk9Itac",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/audiobooks/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"audiobooks",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nombre de AudLibro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDIzNTksImV4cCI6MTcxOTU1MDk5OX0.FDfJglvdHi8hUDQ-rNT7A23n7pqyto6hgmmzTtDnhdE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/audiobooks/getByName?name=Duna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"audiobooks",
+						"getByName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Duna"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edition",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDIzNTksImV4cCI6MTcxOTU1MDk5OX0.FDfJglvdHi8hUDQ-rNT7A23n7pqyto6hgmmzTtDnhdE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/audiobooks/getByEdition?edition=Planeta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"audiobooks",
+						"getByEdition"
+					],
+					"query": [
+						{
+							"key": "edition",
+							"value": "Planeta"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publicacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDIzNTksImV4cCI6MTcxOTU1MDk5OX0.FDfJglvdHi8hUDQ-rNT7A23n7pqyto6hgmmzTtDnhdE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/audiobooks/getByPublished?published=2007-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"audiobooks",
+						"getByPublished"
+					],
+					"query": [
+						{
+							"key": "published",
+							"value": "2007-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Por nombre",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDM4NTMsImV4cCI6MTcxOTU1MjQ5M30.T7R8dvhqdm-m7I3eB7l0GG0Lgl6NIm4-XhwgMB7368I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/audiobooks/getByName?name=Cuentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"audiobooks",
+						"getByName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Cuentos"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Duracion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDM4NTMsImV4cCI6MTcxOTU1MjQ5M30.T7R8dvhqdm-m7I3eB7l0GG0Lgl6NIm4-XhwgMB7368I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/audiobooks/getByLength?duration=10000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"audiobooks",
+						"getByLength"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

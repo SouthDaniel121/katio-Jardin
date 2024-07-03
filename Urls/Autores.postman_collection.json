@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "faaa7ccd-e1ed-46b2-948e-c5edbfba6619",
+		"name": "Autores",
+		"description": "Debe estar levantado java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34808146"
+	},
+	"item": [
+		{
+			"name": "Todos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDAzNDksImV4cCI6MTcxOTU0ODk4OX0.7MbWiWmvs0gf-jM0svE-8oQSkj56flfGyM-RDg3_9hs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDE1MDEsImV4cCI6MTcxOTU1MDE0MX0.68M3qwbREzTvfdBwYtScojez3wIMjIMHuNEMCgwGzJg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/getById?id=39",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"getById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "39"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk0NDk4NDIsImV4cCI6MTcxOTQ1ODQ4Mn0.7sNOkEibc2yDP2Eqg5TdIrOXyaMfBrAd4UNczRnxI6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Christine \",\r\n    \"lastname\":\"Nöstlinger\",\r\n    \"country\":\"Autria\",\r\n    \"birthdate\":\"1936-10-13\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nombre",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDAzNDksImV4cCI6MTcxOTU0ODk4OX0.7MbWiWmvs0gf-jM0svE-8oQSkj56flfGyM-RDg3_9hs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/getByName?name=Gabriel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"getByName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Gabriel"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pais",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDAzNDksImV4cCI6MTcxOTU0ODk4OX0.7MbWiWmvs0gf-jM0svE-8oQSkj56flfGyM-RDg3_9hs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/getByCountry?country=colombia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"getByCountry"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "colombia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fecha De nacimiento",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDAzNDksImV4cCI6MTcxOTU0ODk4OX0.7MbWiWmvs0gf-jM0svE-8oQSkj56flfGyM-RDg3_9hs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/getByDate/1900-05-12/2020-05-14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"getByDate",
+						"1900-05-12",
+						"2020-05-14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlQGV4YW1wbGUiLCJpYXQiOjE3MTk1NDAzNDksImV4cCI6MTcxOTU0ODk4OX0.7MbWiWmvs0gf-jM0svE-8oQSkj56flfGyM-RDg3_9hs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Christine \",\r\n    \"lastname\":\"Nöstlinger\",\r\n    \"country\":\"Autria\",\r\n    \"birthdate\":\"1936-10-13\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/katio/authors/update/Christine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"katio",
+						"authors",
+						"update",
+						"Christine"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
