@@ -4,16 +4,22 @@
 
 Este project de Spring Boot con JPA y MySQL/MongoDB está diseñado para ser una biblioteca o repositorio de libros digital para la Fundación Secretos Para contar.
 
-# Integrantes Grupo 
 
-- Sofia Pineda
-- Alejandro Buitrago
-- Daniel Orrego
+## Versiones
 
-# Entrega final de 15 de junio
-# Tareas
+- Katio 1.0 (Actual)
 
-### LOS JSON ESTAN EN LA CARPETA URLs
+- Katio 1.5 en Csharp [`Katio_net`](https://github.com/SouthDaniel121/katio-Jardin)
+
+
+# Equipo
+
+`Sofia Pineda`
+`Alejandro Buitrago`
+ `Daniel Orrego`
+
+
+### LAS BUSQUEDAS ESTAN EN FORMATO JSON
 
 
 ### Usuarios
