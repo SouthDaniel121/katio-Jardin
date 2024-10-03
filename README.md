@@ -7,9 +7,9 @@ Este proyecto de Spring Boot con JPA y MySQL/MongoDB está diseñado para ser un
 
 ## Version
 
-** Katio 1.0 En Java `(Actual)` ** 
+**Katio 1.0 En Java `(Actual)`** 
 
-** Katio 1.5 En Csharp → [`Katio_net`](https://github.com/SouthDaniel121/katio_net) **
+**Katio 1.5 En Csharp → [`Katio_net`](https://github.com/SouthDaniel121/katio_net)**
 
 
 # Equipo
