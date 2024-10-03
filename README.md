@@ -2,21 +2,21 @@
 
 ## Project Katio-Jardin
 
-Este project de Spring Boot con JPA y MySQL/MongoDB está diseñado para ser una biblioteca o repositorio de libros digital para la Fundación Secretos Para contar.
+Este proyecto de Spring Boot con JPA y MySQL/MongoDB está diseñado para ser una biblioteca o repositorio de libros digital para la Fundación Secretos Para contar.
 
 
-## Versiones
+## Version
 
-- Katio 1.0 En Java `(Actual)`
+** Katio 1.0 En Java `(Actual)` ** 
 
-- Katio 1.5 en Csharp [`Katio_net`](https://github.com/SouthDaniel121/katio_net) 
+** Katio 1.5 En Csharp → [`Katio_net`](https://github.com/SouthDaniel121/katio_net) **
 
 
 # Equipo
 
 `Sofia Pineda`
 `Alejandro Buitrago`
- `Daniel Orrego`
+`Daniel Orrego`
 
 
 ### LAS BUSQUEDAS ESTAN EN FORMATO JSON
